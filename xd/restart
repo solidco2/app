@@ -1,0 +1,15 @@
+#!/usr/bin/env node
+
+/***
+    此为程序重启程序，需要设置 x 属性。。
+***/
+
+const PROGRAM_TITLE = "jessica_app_demo";
+
+require("child_process").spawn(
+    "/usr/bin/env",
+    ["killall", "-u", process.env.USER, PROGRAM_TITLE]
+).on("exit", function(){
+    process.title = PROGRAM_TITLE;
+    require("./app");
+});
